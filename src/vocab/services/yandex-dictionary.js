@@ -41,9 +41,11 @@ export default function yandexDefine(text, lang, targetLang) {
     'text=' + encodeURIComponent(text)
   ].join('&');
 
+  console.log('attempting url' + url);
   return fetch(url)
     .then(resp => resp.json())
     .then(data => {
+      console.log(data);
       if (data && data.def && data.def.length) return data;
 
       throw new Error('No data');
